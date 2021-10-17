@@ -1,0 +1,89 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "require": {
+        "php": "^7.3|^8.0",
+        "fruitcake/laravel-cors": "^2.0",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "laravel/framework": "^8.54",
+        "laravel/sanctum": "^2.11",
+        "laravel/tinker": "^2.5",
+        "doctrine/cache": "^1",
+        "doctrine/orm": "^2.6",
+        "doctrine/persistence": "^1.3.5|^2.0",
+        "illuminate/auth": "^8.0",
+        "illuminate/console": "^8.0",
+        "illuminate/container": "^8.0",
+        "illuminate/contracts": "^8.0",
+        "illuminate/pagination": "^8.0",
+        "illuminate/routing": "^8.0",
+        "illuminate/support": "^8.0",
+        "illuminate/validation": "^8.0",
+        "illuminate/view": "^8.0",
+        "symfony/serializer": "^2.7|^3.0|^4.0|^5.0",
+        "doctrine/inflector": "^1.4"
+    },
+    "require-dev": {
+        "facade/ignition": "^2.5",
+        "fakerphp/faker": "^1.9.1",
+        "laravel/sail": "^1.0.1",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^5.10",
+        "phpunit/phpunit": "^9.5.8",
+        "barryvdh/laravel-debugbar": "~3.0",
+        "itsgoingd/clockwork": "~1.9|^5.0",
+        "illuminate/log": "^8.0",
+        "illuminate/notifications": "^8.0",
+        "illuminate/queue": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/",
+            "LaravelDoctrine\\ORM\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LaravelDoctrine\\ORM\\DoctrineServiceProvider"
+            ],
+            "aliases": {
+                "Registry": "LaravelDoctrine\\ORM\\Facades\\Registry",
+                "Doctrine": "LaravelDoctrine\\ORM\\Facades\\Doctrine",
+                "EntityManager": "LaravelDoctrine\\ORM\\Facades\\EntityManager"
+            }
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
